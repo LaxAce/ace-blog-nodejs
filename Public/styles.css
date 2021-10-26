@@ -124,3 +124,21 @@ textarea {
   font-size: 1.2em;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 470px) {
+  nav {
+    display: block;
+  }
+  nav h1 {
+    font-size: 40px;
+  }
+
+  nav ul {
+    margin-top: 20px;
+    justify-content: center;
+  }
+  li a :hover,
+  li a:active {
+    border-bottom: 1px solid crimson;
+  }
+}
