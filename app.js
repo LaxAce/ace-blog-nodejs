@@ -3,16 +3,17 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 
 const blogRoutes = require("./routes/blogRoutes");
+const dotenv = require("dotenv");
+dotenv.config();
 
 // express app
 const app = express();
 
 // connect to mongodb
-const dbURI =
-  "mongodb+srv://Ace:ace@cluster0.w69rg.mongodb.net/Acedb?retryWrites=true&w=majority";
+const dbURI = process.env.DBURI;
 mongoose
   .connect(dbURI)
-  .then((result) => app.listen(8000))
+  .then((result) => app.listen(process.env.PORT))
   .catch((err) => console.log(err));
 
 // register view engine

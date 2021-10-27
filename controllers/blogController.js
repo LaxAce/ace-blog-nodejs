@@ -28,11 +28,10 @@ const blog_create_get = (req, res) => {
 };
 
 const blog_create_post = (req, res) => {
-  const reqBody = req.body;
+  const { title, snippet, body } = req.body;
 
-  if (reqBody) {
-    const blog = new Blog(reqBody);
-    // console.log(blog);
+  if (title && snippet && body) {
+    const blog = new Blog({ title, snippet, body });
 
     blog
       .save()
