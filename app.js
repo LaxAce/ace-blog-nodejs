@@ -11,9 +11,10 @@ const app = express();
 
 // connect to mongodb
 const dbURI = process.env.DBURI;
+const port = process.env.PORT || 800;
 mongoose
   .connect(dbURI)
-  .then((result) => app.listen(process.env.PORT))
+  .then((result) => app.listen(port))
   .catch((err) => console.log(err));
 
 // register view engine
