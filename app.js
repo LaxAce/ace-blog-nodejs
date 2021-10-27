@@ -14,7 +14,7 @@ const dbURI = process.env.DBURI;
 const port = process.env.PORT || 8000;
 mongoose
   .connect(dbURI)
-  .then((result) => result)
+  .then((result) => app.listen(port))
   .catch((err) => console.log(err));
 
 // register view engine
@@ -40,5 +40,3 @@ app.use("/blogs", blogRoutes);
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
 });
-
-app.listen(port);
