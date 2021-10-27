@@ -20,13 +20,18 @@
       const trashcan = document.querySelector(".delete");
 
       trashcan.addEventListener("click", (e) => {
+        e.preventDefault();
         const endpoint = `/blogs/${trashcan.dataset.doc}`;
+        console.log(trashcan.dataset.doc);
 
         fetch(endpoint, {
           method: "DELETE",
         })
           .then((response) => response.json())
-          .then((data) => (window.location.href = data.redirect))
+          .then((data) => {
+            window.location.href = data.redirect;
+            console.log(data);
+          })
           .catch((err) => console.log(err));
       });
     </script>
