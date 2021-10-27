@@ -9,6 +9,14 @@ dotenv.config();
 // express app
 const app = express();
 
+// connect to mongodb
+const dbURI = process.env.DBURI;
+const port = process.env.PORT || 8000;
+mongoose
+  .connect(dbURI)
+  .then((result) => result)
+  .catch((err) => console.log(err));
+
 // register view engine
 app.set("view engine", "ejs");
 
@@ -33,10 +41,4 @@ app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
 });
 
-// connect to mongodb
-const dbURI = process.env.DBURI;
-const port = process.env.PORT || 8000;
-mongoose
-  .connect(dbURI)
-  .then((result) => app.listen(port))
-  .catch((err) => console.log(err));
+app.listen(port);
