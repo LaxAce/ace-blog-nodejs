@@ -21,7 +21,7 @@ mongoose
 app.set("view engine", "ejs");
 
 // middleware & static files
-app.use(express.static("Public"));
+app.use(express.static("/Public"));
 app.use(express.urlencoded({ extended: true }));
 
 // routes
